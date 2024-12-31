@@ -26,15 +26,18 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                Provider.of<AuthProvider>(context, listen: false)
-                    .login(
-                  emailController.text,
-                  passwordController.text,
-                )
-                    .then((_) {
+              onPressed: () async {
+                try {
+                  await Provider.of<AuthProvider>(context, listen: false)
+                      .login(emailController.text, passwordController.text);
+                  // Navigate to home screen after successful login
                   Navigator.pushReplacementNamed(context, '/home');
-                });
+                } catch (error) {
+                  // Handle login error (e.g., show a dialog or snackbar)
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Login failed')),
+                  );
+                }
               },
               child: Text('Login'),
             ),

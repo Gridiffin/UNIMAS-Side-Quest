@@ -1,10 +1,8 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'src/providers/authprovider.dart';
 import 'src/providers/serviceprovider.dart';
-import 'src/screens/auth/loginscreen.dart';
-import 'src/screens/home/homepage.dart';
+import 'src/screens/splash/splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,10 +18,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
-        routes: {
-          '/home': (context) => HomePage(),
-        },
+        home: SplashScreen(), // Start with SplashScreen
       ),
     );
   }
